@@ -32,9 +32,7 @@ Validate whether a 9x9 Sudoku board complies with classic game rules:
 ## Setup & Installation
 
 ```bash
-python3.10 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+docker compose up --build
 ```
 
 ## Usage Example
@@ -57,13 +55,13 @@ print("Valid board:", is_valid)
 Or via CLI (if implemented):
 
 ```bash
-python cli.py --board path/to/board.txt
+docker compose run sudoku_validator --board "5,3,0,0,7,0,0,0,0;6,0,0,1,9,5,0,0,0;..."
 ```
 
 ## Run Tests
 
 ```bash
-pytest
+docker compose run sudoku_validator pytest
 ```
 
 ## Code Quality & Linting

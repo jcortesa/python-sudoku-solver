@@ -1,14 +1,13 @@
-version: '3.8'
-
 services:
   sudoku-validator:
     image: python:3.13
     working_dir: /app
     volumes:
       - .:/app
-    command: python cli.py
+    command: python -m sudoku_validator.main
     environment:
       - PYTHONUNBUFFERED=1
+      - PYTHONPATH=src
     ports:
       - "8000:8000"
     depends_on: []
