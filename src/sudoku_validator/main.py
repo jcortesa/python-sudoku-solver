@@ -33,7 +33,7 @@ def is_valid_sudoku(board: list[list[int]]) -> bool:
         if not are_unique_column_values:
             return False
 
-        return None
+        return True
 
 def check_valid_board_size(board: list[list[int]], size: int) -> bool:
     if size != len(board) or any(len(row) != size for row in board):
