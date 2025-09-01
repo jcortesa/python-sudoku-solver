@@ -14,4 +14,10 @@ def is_valid_sudoku(board: list[list[int]]) -> bool:
             ValueError: If the board dimensions are not valid (2x2) or contain invalid value types.
         """
 
+        # Check if the board is 2x2
+        size = 2
+
+        if size != len(board) or any(len(row) != size for row in board):
+            raise ValueError("Board must be {}x{}.".format(size, size))
+
         return None
