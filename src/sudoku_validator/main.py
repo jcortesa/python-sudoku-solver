@@ -31,7 +31,7 @@ def check_valid_board_size(board: list[list[int]], size: int) -> bool:
     return True
 
 def check_valid_values(board: list[list[int]]) -> bool:
-    valid_values = set(range(1, (BOARD_SIZE**2)+1))  # For board size of 2x2, valid values are 1, 2, 3, 4
+    valid_values = range(1, (BOARD_SIZE**2)+1)  # For board size of 2x2, valid values are 1, 2, 3, 4
 
     for row in board:
         for value in row:
