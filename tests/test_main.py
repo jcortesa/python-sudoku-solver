@@ -23,6 +23,25 @@ class TestSudokuValidator:
     def test_is_invalid_size(self, board):
         with pytest.raises(ValueError): is_valid_sudoku(board)
 
+    @pytest.mark.parametrize("board", [
+        pytest.param(
+            [
+                [1,'a'],
+                [3,4]
+            ],
+            id="invalid type string"
+        ),
+        pytest.param(
+            [
+                [1, 2],
+                [5, 4]
+            ],
+            id="invalid value out of range"
+        )
+    ])
+    def test_is_valid_values(self, board):
+        with pytest.raises(ValueError): is_valid_sudoku(board)
+
     @pytest.mark.parametrize("board, expected", [
         pytest.param(
             [
@@ -31,6 +50,14 @@ class TestSudokuValidator:
             ],
             True,
             id="2x2 valid"
+        ),
+        pytest.param(
+            [
+                [1, 2],
+                [3, 0]
+            ],
+            True,
+            id="2x2 valid, with empty cell"
         ),
         pytest.param(
             [
