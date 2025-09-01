@@ -55,13 +55,13 @@ print("Valid board:", is_valid)
 Or via CLI (if implemented):
 
 ```bash
-docker compose run sudoku_validator --board "5,3,0,0,7,0,0,0,0;6,0,0,1,9,5,0,0,0;..."
+docker compose run sudoku-validator --board "5,3,0,0,7,0,0,0,0;6,0,0,1,9,5,0,0,0;..."
 ```
 
 ## Run Tests
 
 ```bash
-docker compose run sudoku_validator pytest
+docker compose run sudoku-validator
 ```
 
 ## Code Quality & Linting

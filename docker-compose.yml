@@ -4,12 +4,12 @@ services:
     working_dir: /app
     volumes:
       - .:/app
-    command: python -m sudoku_validator.main
+    command: >
+      sh -c "pip install -r requirements.txt && pytest"
     environment:
       - PYTHONUNBUFFERED=1
-      - PYTHONPATH=src
+      - PYTHONPATH=/app/src
     ports:
       - "8000:8000"
-    depends_on: []
     tty: true
     stdin_open: true
