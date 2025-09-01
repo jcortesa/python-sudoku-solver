@@ -34,9 +34,16 @@ class TestSudokuValidator:
         pytest.param(
             [
                 [1, 2],
+                [0, 4]
+            ],
+            id="invalid value out of range, zero"
+        ),
+        pytest.param(
+            [
+                [1, 2],
                 [5, 4]
             ],
-            id="invalid value out of range"
+            id="invalid value out of range, five"
         )
     ])
     def test_is_valid_values(self, board):
@@ -50,14 +57,6 @@ class TestSudokuValidator:
             ],
             True,
             id="2x2 valid"
-        ),
-        pytest.param(
-            [
-                [1, 2],
-                [3, 0]
-            ],
-            True,
-            id="2x2 valid, with empty cell"
         ),
         pytest.param(
             [

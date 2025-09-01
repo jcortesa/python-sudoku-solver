@@ -8,7 +8,7 @@ def is_valid_sudoku(board: list[list[int]]) -> bool:
 
         Args:
             board (list[list[int]]): A 2x2 nested list representing the Sudoku board.
-                                    Each cell contains integers from 0-4, where 0 represents an empty cell.
+                                    Each cell contains integers from 1-4.
 
         Returns:
             bool: True if the board is valid, False otherwise.
@@ -20,7 +20,7 @@ def is_valid_sudoku(board: list[list[int]]) -> bool:
         # Check if the board is proper size (2x2)
         check_valid_board_size(board, BOARD_SIZE)
 
-        # Check if all values are integers between 0 and BOARD_SIZE^2
+        # Check if all values are integers between 1 and BOARD_SIZE^2
         check_valid_values(board)
 
         return None
@@ -31,10 +31,10 @@ def check_valid_board_size(board: list[list[int]], size: int) -> bool:
     return True
 
 def check_valid_values(board: list[list[int]]) -> bool:
-    valid_values = set(range((BOARD_SIZE**2)+1))  # For board size of 2x2, valid values are 0, 1, 2, 3, 4
+    valid_values = set(range(1, (BOARD_SIZE**2)+1))  # For board size of 2x2, valid values are 1, 2, 3, 4
 
     for row in board:
         for value in row:
             if not isinstance(value, int) or value not in valid_values:
-                raise ValueError("Board values must be integers between 0 and {}.".format(BOARD_SIZE**2))
+                raise ValueError("Board values must be integers between 1 and {}.".format(BOARD_SIZE**2))
     return True
