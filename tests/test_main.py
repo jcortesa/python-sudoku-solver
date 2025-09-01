@@ -64,7 +64,15 @@ class TestSudokuValidator:
                 [3,4]
             ],
             False,
-            id="2x2 invalid"
+            id="2x2 invalid, duplicate in row"
+        ),
+        pytest.param(
+            [
+                [1,2],
+                [1,4]
+            ],
+            False,
+            id="2x2 invalid, duplicate in column"
         )
     ])
     def test_is_valid_sudoku(self, board, expected):

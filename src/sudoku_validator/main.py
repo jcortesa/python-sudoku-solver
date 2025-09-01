@@ -23,6 +23,16 @@ def is_valid_sudoku(board: list[list[int]]) -> bool:
         # Check if all values are integers between 1 and BOARD_SIZE^2
         check_valid_values(board)
 
+        are_unique_row_values: bool = check_unique_values_in_rows(board)
+
+        if not are_unique_row_values:
+            return False
+
+        are_unique_column_values: bool = check_unique_values_in_columns(board)
+
+        if not are_unique_column_values:
+            return False
+
         return None
 
 def check_valid_board_size(board: list[list[int]], size: int) -> bool:
@@ -37,4 +47,23 @@ def check_valid_values(board: list[list[int]]) -> bool:
         for value in row:
             if not isinstance(value, int) or value not in valid_values:
                 raise ValueError("Board values must be integers between 1 and {}.".format(BOARD_SIZE**2))
+    return True
+
+def check_unique_values_in_rows(board: list[list[int]]) -> bool:
+    for row in board:
+        seen = set()
+        for value in row:
+            if value in seen:
+                return False
+            seen.add(value)
+    return True
+
+def check_unique_values_in_columns(board: list[list[int]]) -> bool:
+    for col in range(BOARD_SIZE):
+        seen = set()
+        for row in range(BOARD_SIZE):
+            value = board[row][col]
+            if value in seen:
+                return False
+            seen.add(value)
     return True
